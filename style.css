@@ -47,14 +47,16 @@ svg {
   flex-direction: column;
   position: absolute;
   bottom: 0%;
-  background: rgb(189, 165, 165);
+  color: black;
+  background: rgb(255, 255, 255);
+  /* opacity: 0; */
   padding: 1rem;
   width: 80%;
   border-top-right-radius: 1rem;
-  pointer-events: none;
+  /* pointer-events: none; */
   border-top-left-radius: 1rem;
   /* We are adding an adjustment class */
-  transform: translateY(100px);
+  /* transform: translateY(100px); */
   transition: all 0.5s ease-in-out;
 }
 
@@ -120,4 +122,29 @@ svg {
   background: none;
   cursor: pointer;
   margin: 2rem 0rem;
+}
+
+/* slider stuff */
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+input[type="range"]:active,
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background: rgb(248, 248, 248);
+  border: 2px solid rgb(39, 39, 39);
 }
