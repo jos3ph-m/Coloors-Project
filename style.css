@@ -80,6 +80,10 @@ svg {
   font-weight: 700;
 }
 
+.sliders span {
+  font-weight: 700;
+}
+
 .controls {
   display: flex;
   flex-direction: column;
@@ -132,6 +136,7 @@ input[type="range"] {
   position: relative;
   border-radius: 1rem;
   cursor: pointer;
+  border: 2px solid rgb(39, 39, 39);
 }
 
 input[type="range"]:active,
