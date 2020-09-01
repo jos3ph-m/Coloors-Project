@@ -127,6 +127,7 @@ svg {
   background: none;
   cursor: pointer;
   margin: 2rem 0rem;
+  outline: none;
 }
 
 /* slider stuff */

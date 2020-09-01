@@ -13,12 +13,13 @@ let initialColors;
 // Event listeners
 generateBtn.addEventListener("click", randomColors);
 
-document.body.onkeyup = function (e) {
-  e.preventDefault;
-  if (e.keyCode == 32 || e.keyCode == 13) {
-    randomColors();
-  }
-};
+// document.body.onkeyup = function (e) {
+//   e.preventDefault;
+//   if (e.keyCode == 32 || e.keyCode == 13) {
+//     randomColors;
+//   }
+// };
+
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
 });
@@ -53,6 +54,12 @@ closeAdjustments.forEach((button, index) => {
   });
 });
 
+lockBtn.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    addLockClass(button, index);
+  });
+});
+
 // Functions
 // Color Generator
 function generateHex() {
@@ -60,14 +67,30 @@ function generateHex() {
   return hexColor;
 }
 
+function addLockClass(button, index) {
+  colorDivs[index].classList.toggle("locked");
+  lockBtn[index].firstChild.classList.toggle("fa-lock-open");
+  lockBtn[index].firstChild.classList.toggle("fa-lock");
+}
+
 function randomColors() {
   // Save initialColors
   initialColors = [];
+
   colorDivs.forEach((div, index) => {
     const hexText = div.children[0];
     const randomColor = generateHex();
-    // Add generated color to array
-    initialColors.push(chroma(randomColor).hex());
+
+    // Check if locked
+    if (div.classList.contains("locked")) {
+      // Push original value
+      initialColors.push(hexText.innerText);
+      return;
+    } else {
+      // Push new value
+      initialColors.push(chroma(randomColor).hex());
+    }
+
     // Add color to background
     div.style.backgroundColor = randomColor;
     hexText.innerText = randomColor;
