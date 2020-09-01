@@ -11,6 +11,14 @@ const sliderContainers = document.querySelectorAll(".sliders");
 let initialColors;
 
 // Event listeners
+generateBtn.addEventListener("click", randomColors);
+
+document.body.onkeyup = function (e) {
+  e.preventDefault;
+  if (e.keyCode == 32 || e.keyCode == 13) {
+    randomColors();
+  }
+};
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
 });
