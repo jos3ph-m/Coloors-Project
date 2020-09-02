@@ -13,6 +13,7 @@ let initialColors;
 // Event listeners
 generateBtn.addEventListener("click", randomColors);
 
+// Space / enter generate colors
 // document.body.onkeyup = function (e) {
 //   e.preventDefault;
 //   if (e.keyCode == 32 || e.keyCode == 13) {
