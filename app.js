@@ -302,6 +302,8 @@ function savePalette(e) {
       initialColors.push(color);
       colorDivs[index].style.backgroundColor = color;
       const text = colorDivs[index].children[0];
+      checkTextContrast(color, text);
+      updateTextUI(index);
     });
   });
 
