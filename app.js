@@ -15,14 +15,6 @@ let savedPalettes = [];
 // Event listeners
 generateBtn.addEventListener("click", randomColors);
 
-// Space / enter generate colors
-// document.body.onkeyup = function (e) {
-//   e.preventDefault;
-//   if (e.keyCode == 32 || e.keyCode == 13) {
-//     randomColors;
-//   }
-// };
-
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
 });
@@ -270,7 +262,14 @@ function savePalette(e) {
   });
 
   // Generate object
-  let paletteNr = savedPalettes.length;
+  let paletteNr;
+  const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
+  if (paletteObjects) {
+    paletteNr = paletteObjects.length;
+  } else {
+    paletteNr = savedPalettes.length;
+  }
+
   const paletteObj = { name, colors, nr: paletteNr };
   savedPalettes.push(paletteObj);
   // Save to localStorage
@@ -345,6 +344,8 @@ function getLocal() {
     localPalettes = [];
   } else {
     const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
+
+    savedPalettes = [...paletteObjects];
     paletteObjects.forEach((paletteObj) => {
       // Generate palette for library
       const palette = document.createElement("div");
